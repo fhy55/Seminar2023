@@ -27,6 +27,14 @@ ggsave("Figure_1.1.png",path = output_path)
 
 
 #Figure 1.2
+View(USPersonalExpenditure)
+
+US_long <- USPersonalExpenditure %>% 
+  as_tibble(rownames = "item") %>% 
+  pivot_longer(cols = `1940`:`1960`, 
+               names_to  = "year",  
+               values_to = "expenditure") 
+View(US_long)
 
 USPersonalExpenditure %>% 
   as_tibble(rownames = "item") %>% 
