@@ -55,7 +55,6 @@ curve(dnorm(x, 50, 10),
       0, 100, xlab = "", ylab = "")
 
 pnorm(60, 50, 10)
-
 rnorm(100, 50, 10)
 
 Z <- rnorm(100, 50, 10)
@@ -64,39 +63,30 @@ Z
 hist(Z)
 
 Z[1:10]
-
 a <- c(5, 10, 100)
 Z[a]
 
-
-
 max(Z)
-
 which.max(Z)
 
 min(Z)
-
 which.min(Z)
 
 mean(Z)
-
 summary(Z)
 
 1:10
 
 sample(1:10, 3)
-
 sample(Z, 5)
 
 fruits <- c("ミカン", "バナナ", 
             "リンゴ", "レモン", "モモ")
 
 sample(fruits,  1)
-
 sample(fruits, 2)
 
 coin <- c("Head",  "Tail")
-
 sample(coin, 5,
        replace = TRUE)
 
@@ -106,24 +96,19 @@ mean(rnorm(100, 50, 10))
 S <- 1000
 rec <- numeric(S)
 for(i in 1:S){
-  
   rec[i] <- mean(rnorm(100, 50, 10))
-  
 }
 
 summary(rec)
 
 mean(sample(1:6, 10,
             replace = TRUE))
-
-
 S <- 1000
 rec <- numeric(S)
 
 for(i in 1:S){
-  
-  rec[i] <- mean(sample(1:6, 10, replace = TRUE))
-  
+  rec[i] <- mean(sample(1:6, 10, 
+                        replace = TRUE))
 }
 
 summary(rec)
@@ -132,9 +117,8 @@ S <- 1000
 rec <- numeric(S)
 
 for(i in 1:S){
-  
-  rec[i] <- mean(sample(1:6, 10000, replace = TRUE))
-  
+  rec[i] <- mean(sample(1:6, 
+                        10000, replace = TRUE))
 }
 
 summary(rec)
@@ -142,16 +126,13 @@ summary(rec)
 #2.4
 
 x <- rnorm(1000, 50, 10)
-
 var(x)
-
 sd(x)
 
 S <- 1000; n <- 1000
 rec <- numeric(S)
 
 for(i in 1:S){
-  
   rec[i] <- sd(rnorm(n, 50, 10))
 }
 
