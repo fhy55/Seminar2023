@@ -5,6 +5,14 @@ mean(uniform_random)
 var(uniform_random)
 sd(uniform_random)
 
+for(i in 1:100){
+  sample_size <- i*100
+  uniform_random<- runif(sample_size,
+        0,1)
+  answer <- mean(uniform_random)
+  print(answer)
+}
+
 #2.2
 x <- runif(100)
 y <- rnorm(100,0,1)
@@ -42,6 +50,7 @@ cor(x2,z2)
 cor(z,y)
 cor(z1,y1)
 cor(z2,y2)
+
 
 
 
