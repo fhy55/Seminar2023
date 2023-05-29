@@ -143,7 +143,10 @@ head(malesdata)
 summary(malesdata)
 plot(malesdata)
 
-sch12 <- malesdata[malesdata$school == 12, ] # 高校卒業者の抜き出し
+malesdata
+malesdata[educ == 12,2 ]
+sch12 <- malesdata[malesdata$educ == 12,1]
+# 高校卒業者の抜き出し
 sch16 <- malesdata[malesdata$school == 16, ] # 学部卒業者の抜き出し
 
 
