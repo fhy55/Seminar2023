@@ -3,6 +3,72 @@ library(ggplot2)
 library(dplyr)
 library(lubridate)
 
+
+#problem set
+
+#4.1
+temp_path <- here::here("data/data/data/chap04/temperature_aug.csv")
+tempdata <- read.csv(temp_path)
+
+View(tempdata)
+tempdata <- tempdata%>%
+  mutate( morning = 1*(time>=6)&
+            (time<=12),
+          afternoon = 1*(time>=13)&
+            (time<=18),
+          saturday = 1*((date=="2014/8/2")|
+                          (date=="2014/8/9")|
+                          (date=="2014/8/16")|
+                          (date=="2014/8/23")|
+                          (date=="2014/8/30"))
+            )
+
+
+tempdata$daytime <- 
+  (tempdata$time >= 9) & (tempdata$time <= 18)
+
+lm(elec ~ temp + daytime ,
+   data = tempdata)
+lm(elec ~ temp + morning +afternoon + saturday,
+   data = tempdata)
+
+#4.2
+ice_path <- here::here("data/data/data/chap04/icecream.csv")
+icedata <- read.csv(ice_path)
+View(icedata)
+
+result_lm <-lm(icecream~income,icedata)
+result_lm
+
+ggplot(icedata,aes(income,icecream))+
+  geom_point()+
+  xlab("annual_income")+
+  ylab("icecream_consumption")+
+  geom_abline(intercept = result_lm$coefficients[1],
+              slope = result_lm$coefficients[2])
+
+lm(income~icecream,icedata)
+
+lm(u15~icecream,icedata)
+
+
+
+#4.3
+wage_path <- here::here("data/data/data/chap04/wage.csv")
+wagedata <- read.csv(wage_path)
+
+result_lm <- lm(wage~educ,wagedata)
+
+result_lm
+ggplot(wagedata,aes(educ,wage))+
+  geom_point()+
+  xlab("education")+
+  ylab("wage")+
+  geom_abline(intercept = result_lm$coefficients[1],
+              slope = result_lm$coefficients[2])
+lm(wage~educ+exper,wagedata)
+#教育年数の効果は上昇している。これは、経験年数を一定にした時には、教育の効果が大きいことを示す
+#一方で、経験年数を一定にしないときに、教育年数の賃金への効果は小さいことが考えられる。
 #4.1
 tempdata <- read_csv("temperature_aug.csv")
 

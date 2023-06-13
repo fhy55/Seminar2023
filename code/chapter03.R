@@ -8,11 +8,11 @@ tmpdata <- read.csv(tmp_path)
 
 #3.2
 mean_all_tmp <- mean(tmpdata$temp)
-
 head_100_tmp <- head(tmpdata,100)
 mean_head_tmp <- mean(head_100_tmp$temp)
 
 #無作為抽出は復元？被復元？
+#これは大数の法則のシミュレーション　標本平均が母平均に近くなる
 random_tmp <- sample(tmpdata,size=100,replace=TRUE)
 random_tmp
 mean_random <- mean(random_tmp$temp)
@@ -32,11 +32,12 @@ cor(icedata$icecream,icedata$u15)
 #子供の多い地方は、都市部でなく地方である。地方には、あまりアイスが流通していない可能性もある。(日本はそんなことないが)
 #3.4
 
-x <-rnorm(1000,50,10)
-y <-rnorm(1000,50,10)
+x <-rnorm(100000,50,10)
+y <-rnorm(100000,50,10)
 
 #10は-3σ以上だから、実現確率は1パーセント未満
 #P(X>10)=ΣI{x>10}P(x>10)
+
 mean(x>10)
 
 mean(x>-10)-mean(x>10)
