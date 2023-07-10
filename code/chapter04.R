@@ -28,9 +28,11 @@ tempdata$daytime <-
   (tempdata$time >= 9) & (tempdata$time <= 18)
 
 lm(elec ~ temp + daytime ,
-   data = tempdata)
+   data = tempdata)%>%
+summary()
 lm(elec ~ temp + morning +afternoon + saturday,
    data = tempdata)
+
 
 #4.2
 ice_path <- here::here("data/data/data/chap04/icecream.csv")
@@ -47,7 +49,8 @@ ggplot(icedata,aes(income,icecream))+
   geom_abline(intercept = result_lm$coefficients[1],
               slope = result_lm$coefficients[2])
 
-lm(income~icecream,icedata)
+lm(income~icecream,icedata)%>%
+  summary()
 
 lm(u15~icecream,icedata)
 
@@ -58,7 +61,8 @@ wage_path <- here::here("data/data/data/chap04/wage.csv")
 wagedata <- read.csv(wage_path)
 
 result_lm <- lm(wage~educ,wagedata)
-
+lm(wage~educ,wagedata)%>%
+  summary()
 result_lm
 ggplot(wagedata,aes(educ,wage))+
   geom_point()+
@@ -66,9 +70,12 @@ ggplot(wagedata,aes(educ,wage))+
   ylab("wage")+
   geom_abline(intercept = result_lm$coefficients[1],
               slope = result_lm$coefficients[2])
-lm(wage~educ+exper,wagedata)
+lm(wage~educ+exper,wagedata)%>%
+  summary()
 #教育年数の効果は上昇している。これは、経験年数を一定にした時には、教育の効果が大きいことを示す
 #一方で、経験年数を一定にしないときに、教育年数の賃金への効果は小さいことが考えられる。
+#教育年数の分だけバイアスが働いている。脱落変数バイアス
+
 #4.1
 tempdata <- read_csv("temperature_aug.csv")
 
