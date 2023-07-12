@@ -13,5 +13,6 @@ https://www.jaysong.net/RBook/datahandling1.html
 purr map
 https://qiita.com/kilometer/items/b4977df268d2c21211fc
 
-### C++ 
 https://www.asahi-net.or.jp/~yf8k-kbys/newcpp0.html
+並列処理
+https://qiita.com/birdwatcher/items/2d89374782a56be04aa1
