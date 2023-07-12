@@ -9,6 +9,9 @@ https://bcl.sci.yamaguchi-u.ac.jp/~jun/notebook/r/tidyverse/
 
 https://www.jaysong.net/RBook/datahandling1.html
 
-#### その他
+#### その他 便利なpackageなど
 purr map
 https://qiita.com/kilometer/items/b4977df268d2c21211fc
+
+### C++ 
+https://www.asahi-net.or.jp/~yf8k-kbys/newcpp0.html
