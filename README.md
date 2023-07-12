@@ -16,6 +16,9 @@ https://qiita.com/kilometer/items/b4977df268d2c21211fc
 apply系
 https://multivariate-statistics.com/2020/11/23/r-programming-apply-family/
 
+わかりやすいapply
+http://takenaka-akio.org/doc/r_auto/chapter_07_apply.html
+
 https://www.asahi-net.or.jp/~yf8k-kbys/newcpp0.html
 
 並列処理
