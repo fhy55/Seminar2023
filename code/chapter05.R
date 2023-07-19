@@ -1,4 +1,3 @@
-
 #package
 library(dplyr)
 library(lubridate)
@@ -59,11 +58,9 @@ cbind(lower, upper)
 result %>% confint(level = 0.99)
 
 
-
-
 #5.3
 x <- rnorm(1000, 0, 1)
-y <- 1*5*x+rnorm(1000, 0, 1)
+y <- 1+5*x+rnorm(1000, 0, 1)
 reg <- lm(y~x)
 summary_reg <- summary(reg)
 beta_hat <- summary_reg$coefficients[2, 1]
@@ -73,7 +70,7 @@ bool_CI <- (5>=beta_hat-1.96*sigma)&(5<=beta_hat+1.96*sigma)
 bool_CI <- vector()
 for(i in 1:1000){
   x <- rnorm(1000, 0, 1)
-  y <- 1*5*x+rnorm(1000, 0, 1)
+  y <- 1+5*x+rnorm(1000, 0, 1)
   reg <- lm(y~x)
   summary_reg <- summary(reg)
   beta_hat <- summary_reg$coefficients[2, 1]
