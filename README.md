@@ -19,6 +19,9 @@ https://multivariate-statistics.com/2020/11/23/r-programming-apply-family/
 わかりやすいapply
 http://takenaka-akio.org/doc/r_auto/chapter_07_apply.html
 
+Rcpp
+https://teuder.github.io/rcpp4everyone_ja/090_matrix.html
+
 https://www.asahi-net.or.jp/~yf8k-kbys/newcpp0.html
 
 並列処理
