@@ -4,6 +4,85 @@ library(dplyr)
 library(lubridate)
 library(broom)
 
+# problem sets
+# 5.1
+ice_path <- here::here("data/data/data/chap04/icecream.csv")
+icedata <- read.csv(ice_path)
+View(icedata)
+ice_reg <- lm(icedata$icecream~icedata$income+icedata$u15,data=icedata)
+summary(ice_reg)
+
+betahat <- summary(ice_reg)$coefficients[, 1]
+sigma <- summary(ice_reg)$coefficients[, 2]
+
+lower <- betahat - 1.96 * sigma
+upper <- betahat + 1.96 * sigma
+cbind(lower, upper)
+
+result %>% confint(level = 0.99)
+
+#5.2
+temp_path <- here::here("data/data/data/chap04/temperature_aug.csv")
+tempdata <- read.csv(temp_path)
+
+View(tempdata)
+tempdata <- tempdata%>%
+  mutate( morning = 1*(time>=6)&
+            (time<=12),
+          afternoon = 1*(time>=13)&
+            (time<=18),
+          saturday = 1*((date=="2014/8/2")|
+                          (date=="2014/8/9")|
+                          (date=="2014/8/16")|
+                          (date=="2014/8/23")|
+                          (date=="2014/8/30"))
+  )
+
+
+tempdata$daytime <- 
+  (tempdata$time >= 9) & (tempdata$time <= 18)
+
+lm(elec ~ temp + daytime ,
+   data = tempdata)%>%
+  summary()
+elec_reg<-lm(elec ~ temp + morning +afternoon + saturday,
+   data = tempdata)
+
+
+betahat <- summary(elec_reg)$coefficients[, 1]
+sigma <- summary(elec_reg)$coefficients[, 2]
+
+lower <- betahat - 1.96 * sigma
+upper <- betahat + 1.96 * sigma
+cbind(lower, upper)
+
+result %>% confint(level = 0.99)
+
+
+
+
+#5.3
+x <- rnorm(1000, 0, 1)
+y <- 1*5*x+rnorm(1000, 0, 1)
+reg <- lm(y~x)
+summary_reg <- summary(reg)
+beta_hat <- summary_reg$coefficients[2, 1]
+sigma <- summary_reg$coefficients[2, 2]
+bool_CI <- (5>=beta_hat-1.96*sigma)&(5<=beta_hat+1.96*sigma)
+
+bool_CI <- vector()
+for(i in 1:1000){
+  x <- rnorm(1000, 0, 1)
+  y <- 1*5*x+rnorm(1000, 0, 1)
+  reg <- lm(y~x)
+  summary_reg <- summary(reg)
+  beta_hat <- summary_reg$coefficients[2, 1]
+  sigma <- summary_reg$coefficients[2, 2]
+  bool_CI[i] <- (5>=beta_hat-1.96*sigma)&(5<=beta_hat+1.96*sigma)
+}
+sum(bool_CI)/10000
+
+
 #2つの仮説の下での分布の重なり
 p40 <- pbinom(q = 40, size = 100, prob = 0.5)
 p60 <- pbinom(q = 60, size = 100, prob = 0.5)
