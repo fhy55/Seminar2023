@@ -3,6 +3,9 @@ library(dplyr)
 library(lubridate)
 library(broom)
 
+install.packages("Rcpp")
+library(Rcpp)
+
 # problem sets
 # 5.1
 ice_path <- here::here("data/data/data/chap04/icecream.csv")
@@ -18,7 +21,7 @@ lower <- betahat - 1.96 * sigma
 upper <- betahat + 1.96 * sigma
 cbind(lower, upper)
 
-result %>% confint(level = 0.99)
+ice_reg %>% confint(level = 0.95)
 
 #5.2
 temp_path <- here::here("data/data/data/chap04/temperature_aug.csv")
@@ -55,7 +58,7 @@ lower <- betahat - 1.96 * sigma
 upper <- betahat + 1.96 * sigma
 cbind(lower, upper)
 
-result %>% confint(level = 0.99)
+elec_reg %>% confint(level = 0.95)
 
 
 #5.3
