@@ -9,6 +9,9 @@ https://bcl.sci.yamaguchi-u.ac.jp/~jun/notebook/r/tidyverse/
 
 https://www.jaysong.net/RBook/datahandling1.html
 
+broom
+https://keita43a.hatenablog.com/entry/2020/09/21/171039
+
 #### その他 便利なpackageなど
 purr map
 https://qiita.com/kilometer/items/b4977df268d2c21211fc
